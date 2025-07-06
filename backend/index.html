@@ -19,16 +19,13 @@
 
     <button onclick="sendingTodo()">Send Todo</button><br><br>
     <button onclick="onPress()">Get Todo</button>
+    <div id="display"></div>
   </div>
 
   <script>
     function onPress() {
-      fetch('http://localhost:3000/todos', {
-        method: "GET"
-      }).then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-        });
+      const displayTodo = document.getElementById('display');
+      fetch('http://localhost:3000/todos')
     }
 
     function sendingTodo() {
