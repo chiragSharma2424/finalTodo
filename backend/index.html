@@ -45,13 +45,14 @@
          var childElement = document.createElement('div');
 
          var span1 = document.createElement('span');
-         span1.innerHTML = data[i].title;
+         span1.innerHTML = `Title: ${data[i].title}`;
 
          var span2 = document.createElement('span');
-         span2.innerHTML = data[i].description;
+         span2.innerHTML = `Description: ${data[i].description}`;
 
          var deleteButton = document.createElement('button');
          deleteButton.innerHTML = "Delete Todo";
+         deleteButton.setAttribute('onclick', "deleteTodo('" + data[i]._id + "')");
 
          childElement.appendChild(span1);
          childElement.appendChild(span2);
@@ -85,8 +86,20 @@
         })
     }
 
-    function deleteTodo() {
-      
+    // now we have to send delete request to our backend using fetch
+    function deleteTodo(id) {
+      console.log(id);
+      fetch(`http://localhost:3000/todos/${id}`, {
+        method: "DELETE",
+         headers: {
+                "Content-Type": "application/json"
+         }
+      }).then(() => {
+        console.log("successfully sended delete request")
+      }).catch((err) => {
+        console.log("error in sending delete request");
+        console.log(err);
+      })
     }
   </script>
 </body>
