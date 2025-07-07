@@ -26,12 +26,40 @@
 
   <script>
     function onPress() {
+      // by default fetch will send the get request
+      // get the parent element the div we created in the our html
+      // and we have to create a div in which we have 2 span tag and one deletetodo button
+      // so iterate over the all todos array like in react we use map 
+      // and then new div banae aur parent div me append kr diya child ko
+      // first create a child div inside this div we have 2 span 1 button
+      // append these 2 spans and one button in child div
+      // in final append this whole child div into parent
+
       fetch('http://localhost:3000/todos').then((res) => {
         return res.json();
       }).then((data) => {
         console.log(data);
         var parentElement = document.getElementById('display');
-        parentElement.innerHTML = JSON.stringify(data);
+
+        for(var i = 0; i < data.length; i++) {
+         var childElement = document.createElement('div');
+
+         var span1 = document.createElement('span');
+         span1.innerHTML = data[i].title;
+
+         var span2 = document.createElement('span');
+         span2.innerHTML = data[i].description;
+
+         var deleteButton = document.createElement('button');
+         deleteButton.innerHTML = "Delete Todo";
+
+         childElement.appendChild(span1);
+         childElement.appendChild(span2);
+         childElement.appendChild(deleteButton);
+
+         parentElement.appendChild(childElement);
+       }
+
       }).catch((err) => {
         console.log("error in fetching in todos", err);
       })
@@ -39,6 +67,7 @@
 
 
     // sending post request to my backend
+
     function sendingTodo() {
         const title = document.getElementById('title').value;
         const description = document.getElementById('desc').value;
