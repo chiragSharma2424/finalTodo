@@ -1,68 +1,71 @@
-/* Reset default styling */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-  background: linear-gradient(to right, #f0f2f5, #d2e3fc);
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .container {
-  background-color: #ffffff;
-  padding: 30px 40px;
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #f9f9f9;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
 }
 
-h2 {
-  margin-bottom: 20px;
+.container h2 {
   text-align: center;
+  margin-bottom: 20px;
   color: #333;
 }
 
-label {
+.container label {
   display: block;
-  font-weight: 600;
   margin-bottom: 6px;
+  font-weight: 500;
   color: #555;
 }
 
-input[type="text"] {
+.container input[type="text"] {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
+  padding: 10px 12px;
+  margin-bottom: 15px;
   border: 1px solid #ccc;
-  border-radius: 8px;
-  transition: 0.3s ease;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 15px;
 }
 
-input[type="text"]:focus {
-  border-color: #4a90e2;
-  outline: none;
-  box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
-}
-
-button {
-  width: 100%;
-  background-color: #4a90e2;
+.container button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  background-color: #007BFF;
   color: white;
   border: none;
-  padding: 12px;
-  border-radius: 8px;
-  font-size: 16px;
+  border-radius: 6px;
   cursor: pointer;
+  font-weight: 500;
   transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background-color: #3b7dc4;
+.container button:hover {
+  background-color: #0056b3;
+}
+
+#display {
+  margin-top: 20px;
+}
+
+
+.delete-btn {
+  background-color: #e63946;       /* nice red tone */
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  font-size: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 8px;
+  margin-right: 10px;
+}
+
+/* Optional hover effect */
+.delete-btn:hover {
+  background-color: #c92c3d;
 }

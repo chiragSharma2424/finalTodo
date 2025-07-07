@@ -8,42 +8,37 @@
 </head>
 <body>
    <body>
-  <div class="container">
-    <h2>Create a Todo</h2>
+    <div class="container">
+      <h2>Create a Todo</h2>
 
-    <label for="title">Todo Title:</label>
-    <input type="text" id="title" placeholder="Enter todo title" />
+      <label for="title">Todo Title:</label>
+      <input type="text" id="title" placeholder="Enter todo title" />
 
-    <label for="desc">Todo Description:</label>
-    <input type="text" id="desc" placeholder="Enter description" />
+      <label for="desc">Todo Description:</label>
+      <input type="text" id="desc" placeholder="Enter description" />
 
-    <button onclick="sendingTodo()">Send Todo</button><br><br>
-    <button onclick="onPress()">Get Todo</button>
-    <div id="display"></div>
-  </div>
+      <button onclick="sendingTodo()">Send Todo</button><br><br>
+      <button onclick="onPress()">Get Todo</button>
+      <div id="display">
+
+      </div>
+    </div>
 
   <script>
     function onPress() {
-      const displayTodo = document.getElementById('display');
       fetch('http://localhost:3000/todos').then((res) => {
         return res.json();
       }).then((data) => {
         console.log(data);
-        const newDiv = document.createElement('div');
-        const newDiv2 = document.createElement('div');
-        newDiv.innerHTML = data[1].title;
-        newDiv2.innerHTML = data[1].description;
-        displayTodo.appendChild(newDiv);
-        displayTodo.appendChild(newDiv2);
-
-        const deleteButton = document.createElement('button');
-        deleteButton.innerHTML = "Delete Todo";
-        displayTodo.appendChild(deleteButton);
+        var parentElement = document.getElementById('display');
+        parentElement.innerHTML = JSON.stringify(data);
       }).catch((err) => {
         console.log("error in fetching in todos", err);
       })
     }
 
+
+    // sending post request to my backend
     function sendingTodo() {
         const title = document.getElementById('title').value;
         const description = document.getElementById('desc').value;
@@ -57,7 +52,7 @@
                 "Content-Type": "application/json"
             }
         }).then((resp) => {
-            console.log("post request send si")
+            console.log("post request sended successfully");
         })
     }
 
