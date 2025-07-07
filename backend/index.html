@@ -40,6 +40,7 @@
       }).then((data) => {
         console.log(data);
         var parentElement = document.getElementById('display');
+        parentElement.innerHTML = ""
 
         for(var i = 0; i < data.length; i++) {
          var childElement = document.createElement('div');
@@ -99,6 +100,7 @@
       }).catch((err) => {
         console.log("error in sending delete request");
         console.log(err);
+        onPress()
       })
     }
   </script>
